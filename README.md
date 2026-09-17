@@ -7,18 +7,36 @@ If you want to use the Interface Directly, download the Windows or Mac version [
 
 ### Run it as a tool
 
-Installing the project provides a `labprogen` command:
+[uv](https://github.com/astral-sh/uv) can fetch the project from GitHub, build it in a temporary
+environment and start it, without installing anything permanently:
 
 ```bash
 uvx --from git+https://github.com/Pocoyo7798/LabProGen labprogen
 ```
+
+`--from` names the package to install, `labprogen` the command it provides. Append `@` and a branch,
+tag or commit to run a revision other than the default branch:
+
+```bash
+uvx --from git+https://github.com/Pocoyo7798/LabProGen@main labprogen
+```
+
+To keep the command on your PATH instead of resolving it on every run, install it as a tool:
+
+```bash
+uv tool install git+https://github.com/Pocoyo7798/LabProGen
+labprogen
+```
+
+[pipx](https://github.com/pypa/pipx) installs from git the same way:
 
 ```bash
 pipx install git+https://github.com/Pocoyo7798/LabProGen
 labprogen
 ```
 
-Each isolated environment carries its own PySide6 build, which measures about 820 MB.
+Each isolated environment carries its own PySide6 build, about 820 MB. The first run downloads it,
+later runs reuse the cache.
 
 ### Set up for development
 
